@@ -59,11 +59,11 @@ let mainContainer = document.getElementById("mainContainer");
 
 
 allTimesArray.forEach(object => {
-    let div = document.createElement('div');
-
-    div.textContent = object.name;
-    div.setAttribute("id", object.time);
-    document.body.appendChild(div);
+    
+    let mainDiv = document.createElement('div');   
+    mainDiv.textContent = object.name;
+    mainDiv.setAttribute("id", object.time);
+    mainContainer.appendChild(mainDiv);
 });
 
 
