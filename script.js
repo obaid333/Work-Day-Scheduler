@@ -60,8 +60,22 @@ let mainContainer = document.getElementById("mainContainer");
 
 allTimesArray.forEach(object => {
     
-    let mainDiv = document.createElement('div');   
-    mainDiv.textContent = object.name;
+    let mainDiv = document.createElement("div");   
+    let timeDiv = document.createElement("div");    
+    let userInputDiv = document.createElement("form");
+    let saveDiv = document.createElement("button");
+
+    timeDiv.textContent = object.name;
+    saveDiv.textContent = "Save";  
+
+    userInputDiv.innerHTML = userInputDiv.innerHTML = `<div class="form-group"><textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea></div>`;
+     
+    
+    mainDiv.appendChild(timeDiv);
+    mainDiv.appendChild(userInputDiv);
+    mainDiv.appendChild(saveDiv);
+
+
     mainDiv.setAttribute("id", object.time);
     mainContainer.appendChild(mainDiv);
 });
