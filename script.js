@@ -1,0 +1,4 @@
+let hoursArray = [];
+let datesArray = [];
+
+
