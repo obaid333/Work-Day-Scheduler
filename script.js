@@ -55,7 +55,15 @@ let allTimesArray = [
     }
 ];
 
+let mainContainer = document.getElementById("mainContainer");
 
 
+allTimesArray.forEach(object => {
+    let div = document.createElement('div');
+
+    div.textContent = object.name;
+    div.setAttribute("id", object.time);
+    document.body.appendChild(div);
+});
 
 
