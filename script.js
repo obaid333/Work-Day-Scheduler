@@ -56,7 +56,9 @@ let allTimesArray = [
 ];
 
 let mainContainer = document.getElementById("mainContainer");
+let currentDay = document.getElementById("currentDay");
 
+currentDay.textContent = dayjs().format('dddd - DD of MMMM YYYY');
 
 allTimesArray.forEach(object => {
     
@@ -68,7 +70,7 @@ allTimesArray.forEach(object => {
     timeDiv.textContent = object.name;
     saveDiv.textContent = "Save";  
 
-    userInputDiv.innerHTML = userInputDiv.innerHTML = `<input class="form-control form-control-lg" type="text" placeholder="What Should You be doing at ${object.name}?">`;
+    userInputDiv.innerHTML = userInputDiv.innerHTML = `<input class="form-control form-control-lg" type="text" placeholder="What Should You be doing at ${object.name}?">`;  //'readonly'//
      
     
     mainDiv.appendChild(timeDiv);
