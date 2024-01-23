@@ -1,64 +1,62 @@
+let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
+JSON.parse(localStorage.getItem(todayDate));
+
 let allTimesArray = [
     {
         name: "9am",
         time: "9:00",
-        active: true,
         userTask: ""
     },
     {
         name: "10am",
         time: "10:00",
-        active: true,
         userTask: ""
     },
     {
         name: "11am",
         time: "11:00",
-        active: true,
         userTask: ""
     },
     {
         name: "12pm",
         time: "12:00",
-        active: true,
         userTask: ""
     },
     {
         name: "1pm",
         time: "13:00",
-        active: true,
         userTask: ""
     },
     {
         name: "2pm",
         time: "14:00",
-        active: true,
         userTask: ""
     },
     {
         name: "3pm",
         time: "15:00",
-        active: true,
         userTask: ""
     },
     {
         name: "4pm",
         time: "16:00",
-        active: true,
         userTask: ""
     },
     {
         name: "5pm",
         time: "17:00",
-        active: true,
         userTask: ""
     }
 ];
 
 let mainContainer = document.getElementById("mainContainer");
 let currentDay = document.getElementById("currentDay");
+//let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
 
-currentDay.textContent = dayjs().format('dddd - DD of MMMM YYYY');
+
+
+currentDay.textContent = todayDate; //todays date at the top
+
 
 allTimesArray.forEach(object => {
     
@@ -68,10 +66,22 @@ allTimesArray.forEach(object => {
     let saveDiv = document.createElement("button");
 
     timeDiv.textContent = object.name;
-    saveDiv.textContent = "Save";  
+    saveDiv.setAttribute("id", "saveBtn")
+    saveDiv.textContent = "Save";
 
-    userInputDiv.innerHTML = userInputDiv.innerHTML = `<input class="form-control form-control-lg" type="text" placeholder="What Should You be doing at ${object.name}?">`;  //'readonly'//
-     
+
+    userInputDiv.innerHTML = `<input class="form-control form-control-lg" id="inputForm" type="text" placeholder="What Should You be doing at ${object.name}?">`;  //'readonly'//
+    $("#inputForm").on("input", function(event) {
+        let userInput = event.target.value;
+        //object.userTask.push(userInput);
+    })
+    
+
+    $("#saveBtn").on( "click", function() {
+        //object.userTask.push(userInput);
+        localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
+    });
+    
     
     mainDiv.appendChild(timeDiv);
     mainDiv.appendChild(userInputDiv);
@@ -82,4 +92,5 @@ allTimesArray.forEach(object => {
     mainContainer.appendChild(mainDiv);
 });
 
+//localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
 
