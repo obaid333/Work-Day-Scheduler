@@ -1,42 +1,42 @@
 let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
-JSON.parse(localStorage.getItem(todayDate)); // Use an empty object as a default value if no data is stored
+JSON.parse(localStorage.getItem(todayDate));
 
 let allTimesArray = [
     {
         name: "9am",
-        userTask: []
+        userTask: ""
     },
     {
         name: "10am",
-        userTask: []
+        userTask: ""
     },
     {
         name: "11am",
-        userTask: []
+        userTask: ""
     },
     {
         name: "12pm",
-        userTask: []
+        userTask: ""
     },
     {
         name: "1pm",
-        userTask: []
+        userTask: ""
     },
     {
         name: "2pm",
-        userTask: []
+        userTask: ""
     },
     {
         name: "3pm",
-        userTask: []
+        userTask: ""
     },
     {
         name: "4pm",
-        userTask: []
+        userTask: ""
     },
     {
         name: "5pm",
-        userTask: []
+        userTask: ""
     }
 ];
 
@@ -83,7 +83,7 @@ allTimesArray.forEach(object => {
     $(`#saveBtn-${object.name}`).on("click", function () {    
         let userData = document.getElementById(`inputForm-${object.name}`);
         let userValue = userData.value; 
-          object.userTask = (userValue);
+          object.userTask = userValue;
           localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
       });
     
