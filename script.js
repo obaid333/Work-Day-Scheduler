@@ -1,7 +1,7 @@
 let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
+let currentTime = dayjs().format('ha');
 
-
-var allTimesArray = [
+var allTimesArrayEmpty = [
     {
         name: "9am",
         userTask: ""
@@ -43,13 +43,16 @@ var allTimesArray = [
 
 let mainContainer = document.getElementById("mainContainer");
 let currentDay = document.getElementById("currentDay");
-//let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
-
 
 
 currentDay.textContent = todayDate; //todays date at the top
 
 var allTimesArray = JSON.parse(localStorage.getItem(todayDate));
+
+if (allTimesArray === null) {
+    allTimesArray = allTimesArrayEmpty;
+};
+
 
 allTimesArray.forEach(object => {
     
@@ -58,12 +61,19 @@ allTimesArray.forEach(object => {
     let userInputDiv = document.createElement("input");
     let saveDiv = document.createElement("button");
 
+    // if (object.name < currentTime) {
+    //     userInputDiv.style.background = "gray";
+    // //   }else if (object.name = currentTime) {
+    // //       userInputDiv.style.background = "amber";
+    // //   }else if (object.name > currentTime){
+    // //       userInputDiv.style.background = "green";
+    //   }
+
     timeDiv.textContent = object.name;
     saveDiv.setAttribute("id", "saveBtn-"+object.name)
     saveDiv.textContent = "Save";
 
 
-    //userInputDiv.innerHTML = `<class="form-control form-control-lg" id="inputForm" type="text" placeholder="What Should You be doing at ${object.name}?">`;  //'readonly'//
     userInputDiv.setAttribute("id", `inputForm-${object.name}`);
     userInputDiv.setAttribute("class", "form-control form-control-lg");
     userInputDiv.setAttribute("placeholder", `What should you be doing at ${object.name}?`);
@@ -78,10 +88,6 @@ allTimesArray.forEach(object => {
 
     mainDiv.setAttribute("id", object.name);
     mainContainer.appendChild(mainDiv);
-
-    //push what user writes in input to userTask key
-    // let userData = document.getElementById(`inputForm-${object.name}`);
-    // let userValue = userData.value;
       
     $(`#saveBtn-${object.name}`).on("click", function () {    
         let userData = document.getElementById(`inputForm-${object.name}`);
@@ -89,8 +95,6 @@ allTimesArray.forEach(object => {
           object.userTask = userValue;
           localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
       });
-    
+
+
 });
-
-//localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
-
