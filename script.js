@@ -1,43 +1,43 @@
 let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
-JSON.parse(localStorage.getItem(todayDate));
+let storedData = JSON.parse(localStorage.getItem(todayDate)) || {}; // Use an empty object as a default value if no data is stored
 
 let allTimesArray = [
     {
         name: "9am",
         time: "9:00",
-        userTask: ""
+        userTask: storedData["9am"] || ""
     },
     {
         name: "10am",
-        userTask: ""
+        userTask: storedData["10am"] || ""
     },
     {
         name: "11am",
-        userTask: ""
+        userTask: storedData["11am"] || ""
     },
     {
         name: "12pm",
-        userTask: ""
+        userTask: storedData["12pm"] || ""
     },
     {
         name: "1pm",
-        userTask: ""
+        userTask: storedData["1pm"] || ""
     },
     {
         name: "2pm",
-        userTask: ""
+        userTask: storedData["2pm"] || ""
     },
     {
         name: "3pm",
-        userTask: ""
+        userTask: storedData["3pm"] || ""
     },
     {
         name: "4pm",
-        userTask: ""
+        userTask: storedData["4pm"] || ""
     },
     {
         name: "5pm",
-        userTask: ""
+        userTask: storedData["5pm"] || ""
     }
 ];
 
