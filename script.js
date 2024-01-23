@@ -65,12 +65,9 @@ allTimesArray.forEach(object => {
     userInputDiv.setAttribute("id", `inputForm-${object.name}`);
     userInputDiv.setAttribute("class", "form-control form-control-lg");
     userInputDiv.setAttribute("placeholder", `What should you be doing at ${object.name}?`);
-    userInputDiv.setAttribute("type", "text")
+    userInputDiv.setAttribute("type", "text");
 
-  
-    
-    
-    
+
     mainDiv.appendChild(timeDiv);
     mainDiv.appendChild(userInputDiv);
     mainDiv.appendChild(saveDiv);
@@ -80,9 +77,13 @@ allTimesArray.forEach(object => {
     mainContainer.appendChild(mainDiv);
 
     //push what user writes in input to userTask key
-    let userValue = document.getElementById(`inputForm-${object.name}`).value;
-      $(`#saveBtn-${object.name}`).on("click", function () {     
-          object.userTask.push(userValue);
+    // let userData = document.getElementById(`inputForm-${object.name}`);
+    // let userValue = userData.value;
+      
+    $(`#saveBtn-${object.name}`).on("click", function () {    
+        let userData = document.getElementById(`inputForm-${object.name}`);
+        let userValue = userData.value; 
+          object.userTask = (userValue);
           localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
       });
     
