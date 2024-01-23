@@ -4,7 +4,6 @@ let storedData = JSON.parse(localStorage.getItem(todayDate)) || {}; // Use an em
 let allTimesArray = [
     {
         name: "9am",
-        time: "9:00",
         userTask: storedData["9am"] || ""
     },
     {
@@ -54,7 +53,7 @@ allTimesArray.forEach(object => {
     
     let mainDiv = document.createElement("div");   
     let timeDiv = document.createElement("div");    
-    let userInputDiv = document.createElement("form");
+    let userInputDiv = document.createElement("input");
     let saveDiv = document.createElement("button");
 
     timeDiv.textContent = object.name;
@@ -62,17 +61,17 @@ allTimesArray.forEach(object => {
     saveDiv.textContent = "Save";
 
 
-    userInputDiv.innerHTML = `<input class="form-control form-control-lg" id="inputForm" type="text" placeholder="What Should You be doing at ${object.name}?">`;  //'readonly'//
-    $("#inputForm").on("input", function(event) {
-        let userInput = event.target.value;
-        //object.userTask.push(userInput);
-    })
-    
+    //userInputDiv.innerHTML = `<class="form-control form-control-lg" id="inputForm" type="text" placeholder="What Should You be doing at ${object.name}?">`;  //'readonly'//
+    userInputDiv.setAttribute("id", `inputForm-${object.name}`);
+    userInputDiv.setAttribute("class", "form-control form-control-lg");
+    userInputDiv.setAttribute("placeholder", `What should you be doing at ${object.name}?`);
+    userInputDiv.value = object.userTask;
 
-    $("#saveBtn").on( "click", function() {
-        //object.userTask.push(userInput);
-        localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
+    $(`#inputForm-${object.name}`).on("input", function (event) {
+        let userInput = event.target.value;
+        object.userTask = userInput;
     });
+    
     
     
     mainDiv.appendChild(timeDiv);
@@ -82,6 +81,10 @@ allTimesArray.forEach(object => {
 
     mainDiv.setAttribute("id", object.name);
     mainContainer.appendChild(mainDiv);
+
+    $(`#saveBtn-${object.name}`).on("click", function () {
+        localStorage.setItem(todayDate, JSON.stringify(storedData));
+    });
 });
 
 //localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
