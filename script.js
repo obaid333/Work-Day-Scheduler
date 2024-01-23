@@ -1,7 +1,7 @@
 let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
-JSON.parse(localStorage.getItem(todayDate));
 
-let allTimesArray = [
+
+var allTimesArray = [
     {
         name: "9am",
         userTask: ""
@@ -40,6 +40,7 @@ let allTimesArray = [
     }
 ];
 
+
 let mainContainer = document.getElementById("mainContainer");
 let currentDay = document.getElementById("currentDay");
 //let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
@@ -48,6 +49,7 @@ let currentDay = document.getElementById("currentDay");
 
 currentDay.textContent = todayDate; //todays date at the top
 
+var allTimesArray = JSON.parse(localStorage.getItem(todayDate));
 
 allTimesArray.forEach(object => {
     
@@ -66,6 +68,7 @@ allTimesArray.forEach(object => {
     userInputDiv.setAttribute("class", "form-control form-control-lg");
     userInputDiv.setAttribute("placeholder", `What should you be doing at ${object.name}?`);
     userInputDiv.setAttribute("type", "text");
+    userInputDiv.value = object.userTask;
 
 
     mainDiv.appendChild(timeDiv);
