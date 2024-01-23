@@ -68,7 +68,7 @@ allTimesArray.forEach(object => {
     timeDiv.textContent = object.name;
     saveDiv.textContent = "Save";  
 
-    userInputDiv.innerHTML = userInputDiv.innerHTML = `<div class="form-group"><textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea></div>`;
+    userInputDiv.innerHTML = userInputDiv.innerHTML = `<input class="form-control form-control-lg" type="text" placeholder="What Should You be doing at ${object.name}?">`;
      
     
     mainDiv.appendChild(timeDiv);
