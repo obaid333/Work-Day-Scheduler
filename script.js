@@ -9,42 +9,34 @@ let allTimesArray = [
     },
     {
         name: "10am",
-        time: "10:00",
         userTask: ""
     },
     {
         name: "11am",
-        time: "11:00",
         userTask: ""
     },
     {
         name: "12pm",
-        time: "12:00",
         userTask: ""
     },
     {
         name: "1pm",
-        time: "13:00",
         userTask: ""
     },
     {
         name: "2pm",
-        time: "14:00",
         userTask: ""
     },
     {
         name: "3pm",
-        time: "15:00",
         userTask: ""
     },
     {
         name: "4pm",
-        time: "16:00",
         userTask: ""
     },
     {
         name: "5pm",
-        time: "17:00",
         userTask: ""
     }
 ];
@@ -66,7 +58,7 @@ allTimesArray.forEach(object => {
     let saveDiv = document.createElement("button");
 
     timeDiv.textContent = object.name;
-    saveDiv.setAttribute("id", "saveBtn")
+    saveDiv.setAttribute("id", "saveBtn-" + object.name)
     saveDiv.textContent = "Save";
 
 
@@ -88,7 +80,7 @@ allTimesArray.forEach(object => {
     mainDiv.appendChild(saveDiv);
 
 
-    mainDiv.setAttribute("id", object.time);
+    mainDiv.setAttribute("id", object.name);
     mainContainer.appendChild(mainDiv);
 });
 
