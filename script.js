@@ -1,42 +1,42 @@
 let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
-let storedData = JSON.parse(localStorage.getItem(todayDate)) || {}; // Use an empty object as a default value if no data is stored
+JSON.parse(localStorage.getItem(todayDate)); // Use an empty object as a default value if no data is stored
 
 let allTimesArray = [
     {
         name: "9am",
-        userTask: storedData["9am"] || ""
+        userTask: []
     },
     {
         name: "10am",
-        userTask: storedData["10am"] || ""
+        userTask: []
     },
     {
         name: "11am",
-        userTask: storedData["11am"] || ""
+        userTask: []
     },
     {
         name: "12pm",
-        userTask: storedData["12pm"] || ""
+        userTask: []
     },
     {
         name: "1pm",
-        userTask: storedData["1pm"] || ""
+        userTask: []
     },
     {
         name: "2pm",
-        userTask: storedData["2pm"] || ""
+        userTask: []
     },
     {
         name: "3pm",
-        userTask: storedData["3pm"] || ""
+        userTask: []
     },
     {
         name: "4pm",
-        userTask: storedData["4pm"] || ""
+        userTask: []
     },
     {
         name: "5pm",
-        userTask: storedData["5pm"] || ""
+        userTask: []
     }
 ];
 
@@ -57,7 +57,7 @@ allTimesArray.forEach(object => {
     let saveDiv = document.createElement("button");
 
     timeDiv.textContent = object.name;
-    saveDiv.setAttribute("id", "saveBtn-" + object.name)
+    saveDiv.setAttribute("id", "saveBtn-"+object.name)
     saveDiv.textContent = "Save";
 
 
@@ -65,12 +65,9 @@ allTimesArray.forEach(object => {
     userInputDiv.setAttribute("id", `inputForm-${object.name}`);
     userInputDiv.setAttribute("class", "form-control form-control-lg");
     userInputDiv.setAttribute("placeholder", `What should you be doing at ${object.name}?`);
-    userInputDiv.value = object.userTask;
+    userInputDiv.setAttribute("type", "text")
 
-    $(`#inputForm-${object.name}`).on("input", function (event) {
-        let userInput = event.target.value;
-        object.userTask = userInput;
-    });
+  
     
     
     
@@ -82,9 +79,13 @@ allTimesArray.forEach(object => {
     mainDiv.setAttribute("id", object.name);
     mainContainer.appendChild(mainDiv);
 
-    $(`#saveBtn-${object.name}`).on("click", function () {
-        localStorage.setItem(todayDate, JSON.stringify(storedData));
-    });
+    //push what user writes in input to userTask key
+    let userValue = document.getElementById(`inputForm-${object.name}`).value;
+      $(`#saveBtn-${object.name}`).on("click", function () {     
+          object.userTask.push(userValue);
+          localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
+      });
+    
 });
 
 //localStorage.setItem(todayDate, JSON.stringify(allTimesArray));
