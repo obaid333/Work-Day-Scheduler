@@ -65,10 +65,10 @@ allTimesArray.forEach(object => {
    
     if (object.name < currentTimeNow) {
         userInputDiv.style.background = "gray";
-        userInputDiv.setAttribute("readonly");
+        //userInputDiv.setAttribute("readonly");
       }else if (object.name === currentTimeNow) {
           userInputDiv.style.background = "amber";
-          userInputDiv.setAttribute("readonly");
+        //userInputDiv.setAttribute("readonly");
       }else if (object.name > currentTimeNow){
           userInputDiv.style.background = "green";
       }
