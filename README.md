@@ -9,7 +9,11 @@ The entried store when save is pressed.
 
 Javascript coded as per instructions by TA's from EDx.
 
+
 screenshots
+
+WebApp UI
+![webApp](https://github.com/obaid333/Work-Day-Scheduler/assets/66852767/f453802b-b785-4b6a-b89c-b9e453531712)
 
 HTML
 ![HTML](https://github.com/obaid333/Work-Day-Scheduler/assets/66852767/311aa4c2-5b56-4b48-a2dd-981cc3ee0943)
