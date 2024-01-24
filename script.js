@@ -3,39 +3,39 @@ let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using d
 
 var allTimesArrayEmpty = [
     {
-        name: "9am",
+        name: "09:00",
         userTask: ""
     },
     {
-        name: "10am",
+        name: "10:00",
         userTask: ""
     },
     {
-        name: "11am",
+        name: "11:00",
         userTask: ""
     },
     {
-        name: "12pm",
+        name: "12:00",
         userTask: ""
     },
     {
-        name: "1pm",
+        name: "13:00",
         userTask: ""
     },
     {
-        name: "2pm",
+        name: "14:00",
         userTask: ""
     },
     {
-        name: "3pm",
+        name: "15:00",
         userTask: ""
     },
     {
-        name: "4pm",
+        name: "16:00",
         userTask: ""
     },
     {
-        name: "5pm",
+        name: "17:00",
         userTask: ""
     }
 ];
@@ -60,17 +60,20 @@ allTimesArray.forEach(object => {
     let timeDiv = document.createElement("div");    
     let userInputDiv = document.createElement("input");
     let saveDiv = document.createElement("button");
-    let currentTimeNow = dayjs().format('H');
+    let currentTimeNow = dayjs().format('HH');
+ 
     
    
-    if (object.name < currentTimeNow) {
+    if (parseInt(object.name) < parseInt(currentTimeNow)) {
         userInputDiv.style.background = "gray";
-        //userInputDiv.setAttribute("readonly");
-      }else if (object.name === currentTimeNow) {
-          userInputDiv.style.background = "amber";
-        //userInputDiv.setAttribute("readonly");
-      }else if (object.name > currentTimeNow){
+        userInputDiv.setAttribute("readonly", "");
+        console.log(parseInt(object.name), parseInt(currentTimeNow));
+      }else if (parseInt(object.name) === parseInt(currentTimeNow)) {
+          userInputDiv.style.background = "yellow";
+          userInputDiv.setAttribute("readonly", "");
+      }else if (parseInt(object.name) > parseInt(currentTimeNow)){
           userInputDiv.style.background = "green";
+   
       }
 
 
