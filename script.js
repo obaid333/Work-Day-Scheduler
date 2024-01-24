@@ -1,5 +1,5 @@
 let todayDate = dayjs().format('dddd - DD of MMMM YYYY'); // todays date using day.js
-let currentTime = dayjs().format('ha');
+
 
 var allTimesArrayEmpty = [
     {
@@ -60,14 +60,15 @@ allTimesArray.forEach(object => {
     let timeDiv = document.createElement("div");    
     let userInputDiv = document.createElement("input");
     let saveDiv = document.createElement("button");
-
-    // if (object.name < currentTime) {
-    //     userInputDiv.style.background = "gray";
-    // //   }else if (object.name = currentTime) {
-    // //       userInputDiv.style.background = "amber";
-    // //   }else if (object.name > currentTime){
-    // //       userInputDiv.style.background = "green";
-    //   }
+    let currentTimeNow = dayjs().format('H');
+   
+    if (object.name < currentTimeNow) {
+        userInputDiv.style.background = "gray";
+      }else if (object.name === currentTimeNow) {
+          userInputDiv.style.background = "amber";
+      }else if (object.name > currentTimeNow){
+          userInputDiv.style.background = "green";
+      }
 
     timeDiv.textContent = object.name;
     saveDiv.setAttribute("id", "saveBtn-"+object.name)
