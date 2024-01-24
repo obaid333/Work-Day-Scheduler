@@ -61,14 +61,18 @@ allTimesArray.forEach(object => {
     let userInputDiv = document.createElement("input");
     let saveDiv = document.createElement("button");
     let currentTimeNow = dayjs().format('H');
+    
    
     if (object.name < currentTimeNow) {
         userInputDiv.style.background = "gray";
+        userInputDiv.setAttribute("readonly");
       }else if (object.name === currentTimeNow) {
           userInputDiv.style.background = "amber";
+          userInputDiv.setAttribute("readonly");
       }else if (object.name > currentTimeNow){
           userInputDiv.style.background = "green";
       }
+
 
     timeDiv.textContent = object.name;
     saveDiv.setAttribute("id", "saveBtn-"+object.name)
